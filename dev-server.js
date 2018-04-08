@@ -1,15 +1,20 @@
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
+const engine = require('ejs-locals');
 
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require("webpack-Hot-middleware")
 const webpackConfig = require('./webpack.config');
 
 const app = express(),
-    DIST_DIR = path.join(__dirname, "dist"), // 设置静态访问文件路径
+    DIST_DIR = path.join(__dirname, "public"), // 设置静态访问文件路径
     PORT = 9000,
     complier = webpack(webpackConfig);
+
+app.engine('.html', engine);
+app.set('views', './app/views/pages');
+app.set('view engine', 'html');
 
 let devMiddleware = webpackDevMiddleware(complier, {
     publicPath: webpackConfig.output.publicPath,
@@ -25,12 +30,14 @@ let devMiddleware = webpackDevMiddleware(complier, {
 
 let hotMiddleware = webpackHotMiddleware(complier, {
     log: false,
-    heartbeat: 2000
+    heartbeat: 1000
 });
 
 app.use(devMiddleware);
 
 app.use(hotMiddleware);
+
+require('./config/routes')(app);
 
 app.use(express.static(DIST_DIR)); // 设置访问静态文件的路径
 

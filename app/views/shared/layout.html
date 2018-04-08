@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>webpack-demo</title>
+        <link rel="stylesheet" href="/Vendor/layui/css/layui.css">
+        <link rel="stylesheet" href="/Content/global.css">
+
+        <%-stylesheets%>
+    </head>
+    <body>
+        <div class="header contain-fluid">
+            <div class="contain-box">
+                <% include ./header.html %>
+            </div>
+        </div>
+        <div class="nav contain-fluid">
+            <ul class="contain_box clear">
+                <li class="fl">
+                    <a href="/" class="nav-item <%= nav === 0 && 'active' %>">Index</a>
+                </li>
+                <li class="fl">
+                    <a href="/demo" class="nav-item <%= nav === 1 && 'active' %>">Demo</a>
+                </li>
+            </ul>
+        </div>
+        <div class="section contain-fluid">
+            <div class="contain-box">
+                <%-body -%>
+            </div>
+        </div>
+        <div class="footer contain-fluid">
+            <div class="contain-box">
+                <% include ./footer.html %>
+            </div>
+        </div>
+        <script src="/Vendor/layui/layui.js"></script>
+        <script src="/Vendor/vue.js"></script>
+        <script src="/Scripts/global.js"></script>
+
+        <%-scripts%>
+    </body>
+</html>

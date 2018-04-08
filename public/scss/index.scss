@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.img-box {
+    width: 50%;
+    margin: 10px auto;
+
+    img { width: 100%; }
+}
+.img-bg {
+    width: 50%;
+    height: 300px;
+    margin: 10px auto;
+    background: url(/Images/what-is-webpack.png) no-repeat center center;
+    background-size: contain;
+}
