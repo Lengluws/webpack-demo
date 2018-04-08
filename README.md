@@ -1,1 +1,1 @@
-## webpack-dev-middleware && webpack-hot-middleware
+## webpack 基础开发环境配置，webpack-dev-middleware & webpack-hot-middleware 修改样式与js后浏览器自动刷新。
